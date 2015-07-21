@@ -1,0 +1,39 @@
+$body-bg:	#white;
+$border-radius-base: none;
+$navbar-height:	45px;
+$navbar-default-bg:	#2980b9;
+$navbar-default-brand-color:	white;
+$brand-primary:	#2980b9;
+$navbar-default-link-color: white;
+$navbar-default-link-hover-color: darken($navbar-default-link-color, 20%);
+$jumbotron-bg:	#E8E8E8;
+
+
+@import 'bootstrap';
+
+.center-align-text {
+	text-align: center;
+}
+
+.btn {
+	border-radius: 0;
+}
+
+body {
+	font-family: "museo-slab", Georgia ,serif;
+	font-style: normal;
+	font-weight: 500;
+}
+
+.jumbotron {
+	font-family: "futura-pt", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	color: #18212A
+}
+
+h1, h2, h3, h4 {
+	font-family: "futura-pt", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: 700;
+}
