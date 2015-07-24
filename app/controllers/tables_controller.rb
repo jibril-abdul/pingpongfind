@@ -1,5 +1,7 @@
 class TablesController < ApplicationController
   before_action :set_table, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user onl
+  before_action :authenticate_user!, except: [:index, :show] 
 
   # GET /tables
   # GET /tables.json
@@ -14,7 +16,7 @@ class TablesController < ApplicationController
 
   # GET /tables/new
   def new
-    @table = Table.new
+    @table = current_user.tables.build
   end
 
   # GET /tables/1/edit
@@ -24,7 +26,7 @@ class TablesController < ApplicationController
   # POST /tables
   # POST /tables.json
   def create
-    @table = Table.new(table_params)
+    @table = current_user.tables.build(table_params)
     if @table.save
       redirect_to @table, notice: 'Table was successfully created.' 
     else
@@ -52,7 +54,12 @@ class TablesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_table
-      @table = Table.find(params[:id])
+      @table = Table.find_by(id: params[:id])
+    end
+
+    def correct_user
+      @table = current_user.tables.find(params[:id])
+      redirect_to tables_path, notice: "Not authorized to edit this table" if @table.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

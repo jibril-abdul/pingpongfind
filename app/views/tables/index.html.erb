@@ -7,6 +7,7 @@
     <tr>
       <th>Description</th>
       <th>Title</th>
+      <th>User ID</th>
     </tr>
   </thead>
 
@@ -15,14 +16,18 @@
       <tr>
         <td><%= table.description %></td>
         <td><%= table.title %></td>
+        <td><%= table.user.email  if table.user %></td>
         <td><%= link_to 'Show', table %></td>
-        <td><%= link_to 'Edit', edit_table_path(table) %></td>
-        <td><%= link_to 'Destroy', table, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if table.user == current_user %>
+          <td><%= link_to 'Edit', edit_table_path(table) %></td>
+          <td><%= link_to 'Destroy', table, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Table', new_table_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Table', new_table_path %>
+<% end %>
