@@ -11,9 +11,11 @@ $jumbotron-bg:	#E8E8E8;
 
 @import 'bootstrap';
 
-// body {
-// 	background: url('images/../Gloss Pill ZigZag Light.jpg');
-// }
+body {
+	background: url('images/../pingpong.png');
+	background-repeat: repeat;
+	background-size: 100px 100px;
+}
 
 .center-align-text {
 	text-align: center;
